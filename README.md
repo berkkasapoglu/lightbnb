@@ -25,7 +25,7 @@ This is a web app that allows users to find and rent homes. Users can create and
   * Cloudinary: Store images which user uploads.
   * MongoDB Atlas: Cloud database.
   * Passport - bcrpyt: Authentication-hash passwords.
-  * Mapbox GL JS: Rendering client-side web app.
+  * Mapbox GL JS: Rendering client-side web map.
   * Mapbox Geocoding API: To convert user address into geographic coordinates.
   * Joi: Server-side data validation.
   * Express-session. 

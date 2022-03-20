@@ -6,6 +6,7 @@ This is a web app that allows users to find and rent homes. Users can create and
  * Add, rate and delete review.
  * Can book a spot through a datepicker form.
  * View own bookings.
+ * Upload and delete listing images.
  * Search and filter listing.
  * User authentication, authorization.
  * See paginated view of houses.

@@ -1,0 +1,24 @@
+@mixin flexCenter($direction, $justify) {
+    display: flex !important;
+    justify-content: $justify;
+    align-items: center;
+    flex-direction: $direction;
+}
+
+@mixin mobile {
+    @media(max-width: $mobile) {
+        @content;
+    }
+}
+
+@mixin laptop {
+    @media(max-width: $laptop) {
+        @content;
+    }
+}
+
+@mixin pc {
+    @media(min-width: $pc) {
+        @content;
+    }
+}

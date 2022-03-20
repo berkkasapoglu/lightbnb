@@ -1,0 +1,63 @@
+.stay-list {
+    @include flexCenter(row, space-around);
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 1em;
+    margin-top: 2rem;
+}
+
+.stays-header {
+    @include flexCenter(row, space-between);
+    margin-top: 2rem;
+    padding: 1rem 0;
+}
+
+.stay {
+    width: 25rem;
+    &__image {
+        width: 100%;
+        object-fit: cover;
+        height: 300px;
+        border-radius: $radius-high;
+    }
+    &__specs {
+        @include flexCenter(row, space-between);
+    }
+    &__rating {
+        @include flexCenter(row, space-between);
+    }
+    &__star-icon {
+        color: $primary-color;
+    }
+}
+
+@include pc {
+    .stay {
+        width: 28rem;
+    }
+}
+
+//Suggestion section
+.suggestion {
+    overflow: hidden;
+    border-radius: $radius-high;
+    &__description {
+        padding: 1.5rem 1rem 6rem;
+        color: $light-color;
+        margin-top: 0;
+        background-color: #bc1a6e;
+    }
+    &__image {
+        width: 100%;
+        display: block;
+    }
+}
+
+.cluster-map {
+    width: 100%;
+    height: 500px;
+}
+
+.map-text {
+    color: $primary-color
+}

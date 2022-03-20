@@ -1,0 +1,45 @@
+<%- layout('layout/boilerplate') %>
+<section>
+    <div class="stays-header">
+        <h2 class="stays-header__title">Stays in <%= location %></h2>
+        <p class="stays-header__text"><%= listings.length %> stays </p>
+    </div>
+    <% for(let listing of listings) { %>
+    <div class="filtered-stay">
+        <img src="<%= listing.images[0].url %>" alt="" class="filtered-stay__image">
+        <div class="filtered-stay__description-wrapper">
+            <h3 class="filtered-stay__title"><%= listing.title %>
+            </h3>
+            <p class="text-muted"><%= listing.stayingType %></p>
+            <p class="text-muted"><%= listing.location.city %>-<%= listing.location.country %></p>
+            <p class="filtered-stay__description"><%= listing.description %></p>
+            <h6><%= listing.numRoom %> bedrooms - <%= listing.numBed %> beds - <%= listing.numBath %> baths</h6>
+            <h5>Price: <%= listing.price %> $/night</h5>
+            <p></p>
+        </div>
+        <div class="filtered-stay__info">
+            <div class="filtered-stay__rating-wrapper flex-center">
+                <h3 class="filtered-stay__rating"><%= listing.avgRating %></h3>
+                <h5 class="filtered-stay__review"><%= listing.reviews.length %> Review</h5>
+            </div>
+            <div>
+                <div class="filtered-stay__icon-wrapper">
+                    <i class="filtered-stay__icon fa-solid fa-location-dot"></i>
+                    <p>Perfect Location</p>
+                </div>
+                <div class="filtered-stay__icon-wrapper">
+                    <i class="filtered-stay__icon fa-solid fa-people-carry-box"></i>
+                    <p>Superb Staff</p>
+                </div>
+                <div class="filtered-stay__icon-wrapper">
+                    <i class="filtered-stay__icon fa-solid fa-wand-magic-sparkles"></i>
+                    <p>Fantastic Cleanliness</p>
+                </div>
+            </div>
+            <form action="/listings/<%= listing._id %>">
+                <button class="btn btn--primary btn--full">View</button>
+            </form>
+        </div>
+    </div>
+    <% } %>
+</section>

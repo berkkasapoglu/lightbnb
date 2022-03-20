@@ -1,0 +1,141 @@
+<%- layout('./layout/boilerplate') %>
+    <h1 class="section-header text-center">Create New Listing</h1>
+    <form action="/listings" class="form" method="POST" enctype="multipart/form-data" id="form" novalidate>
+        <div class="input-wrapper">
+            <label for="title" class="input-wrapper__label">
+                <h3>Title</h3>
+            </label>
+            <div class="input-wrapper__check">
+                <input type="text" class="input-wrapper__input" id="title" name="title" required>
+                <i class="input-wrapper__control fa-solid fa-circle-check"></i>
+                <i class="input-wrapper__control fa-solid fa-circle-exclamation"></i>
+                <div class="err-message"></div>
+            </div>
+        </div>
+
+        <div class="input-wrapper">
+            <label for="description" class="input-wrapper__label">
+                <h3>Description</h3>
+            </label>
+            <div class="input-wrapper__check">
+                <textarea name="description" id="description" cols="30" rows="10" class="input-wrapper__input" required></textarea>
+                <i class="input-wrapper__control fa-solid fa-circle-check"></i>
+                <i class="input-wrapper__control fa-solid fa-circle-exclamation"></i>
+                <div class="err-message"></div>
+            </div>
+        </div>
+
+        <div class="multiple-input">
+            <div class="input-wrapper">
+                <label for="price" class="input-wrapper__label">
+                    <h3>Price</h3>
+                </label>
+                <div class="input-wrapper__check">
+                    <input type="number" class="input-wrapper__input" name="price" id="price" required>
+                    <i class="input-wrapper__control fa-solid fa-circle-check"></i>
+                    <i class="input-wrapper__control fa-solid fa-circle-exclamation"></i>
+                    <div class="err-message"></div>
+                </div>
+            </div>
+        <div class="input-wrapper">
+                <label for="stayingType" class="input-wrapper__label">
+                    <h3>Staying Type</h3>
+                </label>
+                <div class="input-wrapper__check">
+                    <select name="stayingType" id="stayingType" class="input-wrapper__input">
+                        <option value="Entire home/apt">Entire home/apt</option>
+                        <option value="Private room">Private room</option>
+                        <option value="Shared room">Shared room</option>
+                    </select>
+                    <i class="input-wrapper__control fa-solid fa-circle-check"></i>
+                    <i class="input-wrapper__control fa-solid fa-circle-exclamation"></i>
+                    <div class="err-message"></div>
+                </div>
+            </div>
+        </div>
+        <div class="multiple-input">
+            <div class="input-wrapper">
+                <label for="country" class="input-wrapper__label">
+                    <h3>Country</h3>
+                </label>
+                <div class="input-wrapper__check">
+                    <input type="text" class="input-wrapper__input" id="country" name="location[country]" required>
+                    <i class="input-wrapper__control fa-solid fa-circle-check"></i>
+                    <i class="input-wrapper__control fa-solid fa-circle-exclamation"></i>
+                    <div class="err-message"></div>
+                </div>
+            </div>
+            <div class="input-wrapper">
+                <label for="city" class="input-wrapper__label">
+                    <h3>City</h3>
+                </label>
+                <div class="input-wrapper__check">
+                    <input type="text" class="input-wrapper__input" id="city" name="location[city]" required>
+                    <i class="input-wrapper__control fa-solid fa-circle-check"></i>
+                    <i class="input-wrapper__control fa-solid fa-circle-exclamation"></i>
+                    <div class="err-message"></div>
+                </div>
+            </div>
+        </div>
+        <div class="input-wrapper">
+            <label for="address" class="input-wrapper__label">
+                <h3>Address</h3>
+            </label>
+            <div class="input-wrapper__check">
+                <input type="text" class="input-wrapper__input" id="address" name="location[address]" required>
+                <i class="input-wrapper__control fa-solid fa-circle-check"></i>
+                <i class="input-wrapper__control fa-solid fa-circle-exclamation"></i>
+                <div class="err-message"></div>
+            </div>
+    </div>
+        <div class="input-wrapper">
+            <label for="image" class="input-wrapper__label">
+                <h3>Image</h3>
+            </label>
+            <div class="input-wrapper__check">
+                <input type="file" class="input-wrapper__input" class="image" name="image" id="image" multiple>
+                <i class="input-wrapper__control fa-solid fa-circle-check"></i>
+                <i class="input-wrapper__control fa-solid fa-circle-exclamation"></i>
+                <div class="err-message"></div>
+            </div>
+        </div>
+        <div class="multiple-input">
+            <div class="input-wrapper">
+                <label for="beds" class="input-wrapper__label">
+                    <h3>Beds</h3>
+                </label>
+                <div class="input-wrapper__check">
+                    <input type="number" class="input-wrapper__input" id="beds" min="1" name="numBed" required>
+                    <i class="input-wrapper__control fa-solid fa-circle-check"></i>
+                    <i class="input-wrapper__control fa-solid fa-circle-exclamation"></i>
+                    <div class="err-message"></div>
+                </div>
+            </div>
+            <div class="input-wrapper">
+                <label for="rooms" class="input-wrapper__label">
+                    <h3>Rooms</h3>
+                </label>
+                <div class="input-wrapper__check">
+                    <input type="number" class="input-wrapper__input" id="rooms" min="1" name="numRoom" required>
+                    <i class="input-wrapper__control fa-solid fa-circle-check"></i>
+                    <i class="input-wrapper__control fa-solid fa-circle-exclamation"></i>
+                    <div class="err-message"></div>
+                </div>
+            </div>
+            <div class="input-wrapper">
+                <label for="baths" class="input-wrapper__label">
+                    <h3>Baths</h3>
+                </label>
+                <div class="input-wrapper__check">
+                    <input type="number" class="input-wrapper__input" id="baths" min="0" name="numBath" required>
+                    <i class="input-wrapper__control fa-solid fa-circle-check"></i>
+                    <i class="input-wrapper__control fa-solid fa-circle-exclamation"></i>
+                    <div class="err-message"></div>
+                </div>
+            </div>
+        </div>
+        <div class="form-btn-wrapper">
+            <button class="btn btn--primary" type="submit">Submit</button>
+        </div>
+    </form>
+    <script src="/js/validateForm.js"></script>

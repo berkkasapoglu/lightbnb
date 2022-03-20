@@ -1,0 +1,35 @@
+<%- layout('layout/boilerplate') %>
+<h2 class="section-header text-center">Login</h2>
+<form action="/login" class="form" id="form" method="POST" novalidate>
+    <div class="input-wrapper">
+        <label for="username" class="input-wrapper__label">
+            <h3>Username</h3>
+        </label>
+        <div class="input-wrapper__check">
+            <input type="text" class="input-wrapper__input" id="username" name="username" required>
+            <i class="input-wrapper__control fa-solid fa-circle-check"></i>
+            <i class="input-wrapper__control fa-solid fa-circle-exclamation"></i>
+            <div class="err-message"></div>
+        </div>
+    </div>
+    <div class="input-wrapper">
+        <label for="password" class="input-wrapper__label">
+            <h3>Password</h3>
+        </label>
+        <div class="input-wrapper__check">
+            <input type="password" class="input-wrapper__input" id="password" name="password" required>
+            <i class="input-wrapper__control fa-solid fa-circle-check"></i>
+            <i class="input-wrapper__control fa-solid fa-circle-exclamation"></i>
+            <div class="err-message"></div>
+        </div>
+    </div>
+    <div class="form-btn-wrapper">
+        <button class="btn btn--primary btn--full">Sign in</button>
+    </div>
+    <p>
+        Don't you have an account?
+        <strong><a href="/register" class="link">Create Account</a></strong>
+    </p>
+</form>
+
+<script src="/js/validateForm.js"></script>

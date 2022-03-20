@@ -1,0 +1,93 @@
+<header>
+    <nav class="nav">
+        <a href="/listings">
+            <img src="/img/logo.png" alt="" class="nav__logo">
+        </a>
+        <div class="search nav__item">
+            <form action="/listings/category">
+                <div class="search__wrapper">
+                    <input type="text" class="search__input" name="location" placeholder="Location">
+                    <div class="search__icon-wrapper">
+                        <button type="submit">
+                            <i class="search__icon fas fa-regular fa-magnifying-glass"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="nav__right">
+            <div class="nav__item big-screen-item">
+                <a href="/listings/new" class="nav__link big-screen-item">
+                    <h4 class="nav__text">Become a host</h4>
+                </a>
+            </div>
+            <div class="nav__item hide">
+                <% if(user) { %>
+                <small>Hi, <%= user.username %> </small>
+                <% } %>
+            </div>
+            <div class="nav__item">
+                <button class="btn btn--icon" id="account">
+                    <i class="far fa-thin fa-user"></i>
+                </button>
+                <div class="menu hide">
+                    <div class="menu__wrapper">
+                        <a href=""><i class="fa-solid fa-xmark fa-lg"></i></a>
+                        <% if(user) { %>
+                        <div class="menu__suggestion">
+                            <% if(user) { %>
+                            <small>Hi, <%= user.username %> </small>
+                            <% } %>
+                        </div>
+                        <a href="/trips" class="menu__item">
+                            <h2 class="menu__text">My Trips</h2>
+                        </a>
+                        <a href="/logout" class="menu__item">
+                            <h2 class="menu__text">Logout</h2>
+                        </a>
+                        <% } else { %>
+                        <a href="/register" class="menu__item">
+                            <h2 class="menu__text">Register</h2>
+                        </a>
+                        <a href="/login" class="menu__item">
+                            <h2 class="menu__text">Login</h4>
+                        </a>
+                        <% } %>
+                    </div>
+                    <div class="menu__suggestion">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <a href="/listings/category/Brooklyn" class="nav__link">
+                            <h5 class="nav__text">Brooklyn, New York</h5>
+                        </a>
+                    </div>
+                    <div class="menu__suggestion">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <a href="/listings/category/Manhattan" class="nav__link">
+                            <h5 class="nav__text">Manhattan, New York</h5>
+                        </a>
+                    </div>
+                    <div class="menu__suggestion">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <a href="/listings/category/Harlem" class="nav__link">
+                            <h5 class="nav__text">Harlem, New York</h5>
+                        </a>
+                    </div>
+                    <div class="menu__suggestion">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <a href="/listings/category/Chelsea" class="nav__link">
+                            <h5 class="nav__text">Chelsea, New York</h5>
+                        </a>
+                    </div>
+                    <div class="menu__suggestion">
+                        <form action="/listings/new">
+                            <button class="btn btn--primary btn--full nav__mobile-btn">Become a Host</button>
+                        </form>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </nav>
+</header>

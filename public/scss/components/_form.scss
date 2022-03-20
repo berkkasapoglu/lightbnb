@@ -1,0 +1,82 @@
+.form {
+    width: 70%;
+    margin: 1rem auto;
+    margin-bottom: 5rem;
+    border: $border;
+    padding: 3rem;
+    &__label {
+        display: block;
+        margin-bottom: .5rem;
+    }
+    &__image {
+        width: 50%;
+        height: auto;
+    }
+}
+
+.multiple-input {
+    @include flexCenter(row,space-between);
+    gap: 1rem;
+}
+
+.input-wrapper {
+    width: 100%;
+    &__label {
+        display: block;
+        margin-bottom: .5rem;
+    }
+    &__input {
+        position: relative;
+        border-radius: $radius-reg;
+        box-shadow: $shadow;
+        width: 100%;
+        border: $border;
+        padding: 1rem .5rem;
+        resize: vertical;
+        &:focus {
+            border: 1px solid $text-color;
+            outline: none;
+        }
+
+        .is-validated &:valid {
+            border-color: $success-color;
+            & ~ .fa-circle-check {
+                display: block;
+                color: $success-color;
+            }
+            & ~ .err-message {
+                visibility: hidden;
+            }
+        }
+
+        .is-validated &:invalid {
+            border-color: $danger-color;
+            & ~ .fa-circle-exclamation {
+                display: block;
+                color: $danger-color;
+            }
+            & ~ .err-message {
+                color: $danger-color;
+            }
+        }
+    }
+
+    .fa-circle-exclamation,.fa-circle-check {
+        display: none;
+    }
+
+    &__check {
+        position: relative;
+    }
+
+    &__control {
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(-100%,100%);
+    }
+
+    .err-message {
+        display: inline-block;
+    }
+}

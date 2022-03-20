@@ -1,0 +1,20 @@
+<% if(success.length) {%>
+<div class="flash flash--success fade show">
+    <div class="flash__wrapper">
+        <div class="flash__title">
+            <div class="flash__message"><h4><%= success %></h4></div>
+            <i class="flash__close-icon fa-solid fa-xmark fa-lg"></i>
+        </div>
+    </div>
+</div>
+<% } %>
+<% if(error.length) {%>
+    <div class="flash flash--alert fade show">
+        <div class="flash__wrapper">
+            <div class="flash__title">
+                <div class="flash__message"><h4><%= error %></h4></div>
+                <i class="flash__close-icon fa-solid fa-xmark fa-lg"></i>
+            </div>
+        </div>
+    </div>
+<% } %>

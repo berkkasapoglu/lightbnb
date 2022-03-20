@@ -1,0 +1,42 @@
+$font-stack: "Poppins", sans-serif;
+
+$light-color: #f7f7f7;
+$primary-color: #FF385C;
+$primary-color-hovered: #ec2247;
+$muted-color: #828282;
+$text-color: #333333;
+
+$success-color:	#42ba96;
+$success-color-hovered: #2ca17e;
+
+$info-color: #22c5d1;
+$info-color-hovered: #38dae6;
+
+$danger-color: #df4759;
+$danger-color-hovered: #d62e41;
+
+$border: 1px solid #dee2e6;
+//Box shadow
+$shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+//Font size
+$font-weights: (
+    "thin": 300,
+    "regular": 400,
+    "bold": 600
+);
+$font-xsm: 0.75rem;
+$font-sm: 0.95rem; 
+$font-md: 1rem;
+$font-hg: 1.125rem;
+$font-lg: 1.3rem;
+
+//border-radius 
+$radius-reg: .5rem;
+$radius-high: 1rem;
+//mobile size
+$mobile: 769px;
+$laptop: 1000px;
+$pc: 1200px;
+$tv: 1500px;
+//transition
+$transition: .3s all ease-out;

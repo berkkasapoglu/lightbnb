@@ -1,0 +1,18 @@
+//Helpers
+@import "./helpers/mixin",
+        "./helpers/variables",
+        "./helpers/globals";
+
+//Components
+@import "./components/form",
+        "./components/flash",
+        "./components/nav",
+        "./components/button",
+        "./components/link",
+        "./components/pagination";
+
+//Pages Specific styles
+@import "./pages/show",
+        "./pages/home",
+        "./pages/filter",
+        "./pages/trips";

@@ -1,0 +1,37 @@
+<%- layout('layout/boilerplate') %>
+<h1 class="section-header">Trips</h1>
+<section>
+    <div class="filtered-stay filtered-stay--center">
+        <div class="filtered-stay__description-wrapper">
+            <img src="/img/icon.png" alt="" class="small-icon">
+            <h3 class="filtered-stay__title">No trips booked...yet!
+            </h3>
+            <p class="text-muted">Time to dust off your bags and start planning your next adventure</p>
+            <form action="/listings">
+                <button class="btn btn--primary">Start Searching</button>
+            </form>
+        </div>
+        <img src="/img/trips.jpg" alt="" class="filtered-stay__image filtered-stay__image--full">
+    </div>
+</section>
+<section>
+    <h2 class="section-header">Where you've been</h2>
+    <div class="trips">
+        <% for(let trip of user.bookings) { %>
+            <% if(trip.place) { %> 
+        <div class="trip">
+            <a href="listings/<%= trip.place._id %>"><img src="<%= trip.place.images[0].url %>" alt="" class="small-icon"></a>
+            <div>
+                <h4><%= trip.place.location.city %>, <%= trip.place.location.country %></h4>
+                <p class="text-muted">Hosted by <%= trip.place.owner.username %></p>
+                <p class="text-muted">
+                    <%= trip.date.checkin.toDateString() %>
+                    -
+                    <%= trip.date.checkout.toDateString() %>
+                </p>
+            </div>
+        </div>
+
+        <% }} %> 
+    </div>
+</section>

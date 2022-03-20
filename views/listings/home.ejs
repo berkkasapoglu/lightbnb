@@ -1,0 +1,141 @@
+<%- layout('./layout/boilerplate') %>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.12/dist/css/splide.min.css">
+<section>
+    <div id="map" class="cluster-map"></div>
+    <h2 class="section-header">Inspiration for your next trip</h2>
+    <div class="splide">
+        <div class="splide__track">
+            <ul class="splide__list suggestions">
+                <li class="splide__slide">
+                    <div class="suggestion">
+                        <a href="/listings/category/Brooklyn"><img
+                                src="https://a0.muscache.com/im/pictures/0d4ae5be-37d9-400c-917a-de52a034fe4c.jpg?im_w=240"
+                                alt="" class="suggestion__image"></a>
+                        <div class="suggestion__description">
+                            <h2 class="suggestion__title">Brooklyn</h2>
+                            <p class="suggestion__text">20 kilometers away</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="splide__slide">
+                    <div class="suggestion">
+                        <a href="/listings/category/Manhattan"><img
+                                src="https://a0.muscache.com/im/pictures/54582c41-77ef-4f41-aa88-6a4ed0068f4b.jpg?im_w=240"
+                                alt="" class="suggestion__image"></a>
+                        <div class="suggestion__description">
+                            <h2 class="suggestion__title">Manhattan</h2>
+                            <p class="suggestion__text">205 kilometers away</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="splide__slide">
+                    <div class="suggestion">
+                        <a href="/listings/category/Harlem"><img
+                                src="	https://a0.muscache.com/im/pictures/64530077-ffc7-481b-8cca-50ec8c5f3324.jpg?im_w=240"
+                                alt="" class="suggestion__image"></a>
+                        <div class="suggestion__description">
+                            <h2 class="suggestion__title">Harlem</h2>
+                            <p class="suggestion__text">10 kilometers away</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="splide__slide">
+                    <div class="suggestion">
+                        <a href="/listings/category/Chelsea"><img
+                                src="https://a0.muscache.com/im/pictures/3836379f-169d-4259-8c08-a6cb50461903.jpg?im_w=240"
+                                alt="" class="suggestion__image"></a>
+                        <div class="suggestion__description">
+                            <h2 class="suggestion__title">Chelsea</h2>
+                            <p class="suggestion__text">500 kilometers away</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<section id="listing-section">
+    <div class="stays-header">
+        <h2 class="stays-header__title">Stays in United States</h2>
+        <p class="stays-header__text"><%= listings.length %> stays </p>
+    </div>
+    <div class="stay-list">
+        <% for(let listing of listings) { %>
+        <div class="stay">
+            <a href="/listings/<%= listing._id %>" class="stay__link">
+                <% if(listing.images.length) { %>
+                <img src="<%= listing.images[0].url %>" class="stay__image">
+                <% } %>
+            </a>
+            <div class="stay__description">
+                <a href="/listings/<%= listing._id %>">
+                    <h4 class="stay__title"><%= listing.title %></h4>
+                </a>
+                <div class="stay__specs">
+                    <span class="text-muted"><%= listing.stayingType %></span>
+                    <span><%= listing.numBed %> Bed</span>
+                </div>
+                <div class="stay__rating">
+                    <p class="stay-rating-mean"><i
+                            class="stay__star-icon fa fa-solid fa-star"></i><%= listing.avgRating %></p>
+                    <h5><%= listing.price %>$/night</h5>
+                </div>
+            </div>
+        </div>
+        <% } %>
+    </div>
+</section>
+<% if(pageCount) { %>
+<div class="pagination">
+    <% if(parseInt(page)==1) { %>
+    <a class="pagination__link pagination--disabled">
+        <span class="pagination__link-next pagination__link-text">&#8592; Prev</span>
+    </a>
+    <% } else { %>
+    <a class="pagination__link" href="/listings?page=<%= parseInt(page) %>">
+        <span class="pagination__link-next pagination__link-text">&#8592; Prev</span>
+    </a>
+    <% } %>
+    <% if(parseInt(page)> 3)  { %>
+        <a class="pagination__link" href="/listings?page=1">
+            <span class="pagination__link-next pagination__link-text">1</span>
+        </a>
+        ...
+    <% } %>
+    <% let i = parseInt(page)>3 ? parseInt(page)-1 : 1 %>
+    <% for(i; i<=parseInt(page)+1 && i<=pageCount; i++) { %>
+        <% if(i===parseInt(page)) {  %>
+        <a class="pagination__link pagination__current" href="/listings?page=<%= parseInt(page) %>">
+            <span class="pagination__link-next pagination__link-text"><%= parseInt(page) %></span>
+        </a>
+        <% } else { %>
+        <a class="pagination__link" href="/listings?page=<%= i %>">
+            <span class="pagination__link-next pagination__link-text"><%= i %></span>
+        </a>
+        <% } %> 
+    <% } %>
+    <% if(parseInt(page)+2<pageCount) { %>  
+        ...
+    <% } else if(parseInt(page)+2===pageCount) { %> 
+        <a class="pagination__link" href="/listings?page=<%= pageCount %>">
+            <span class="pagination__link-next pagination__link-text"><%= pageCount %></span>
+        </a>
+    <% } %>
+    <a class="pagination__link" href="/listings?page=<%= pageCount %>">
+        <span class="pagination__link-next pagination__link-text">Last</span>
+    </a> 
+    <% if(parseInt(page)==pageCount) { %>
+    <a class="pagination__link pagination--disabled">
+        <span class="pagination__link-next pagination__link-text">Next &#8594;</span>
+    </a>
+    <% } else { %>
+    <a class="pagination__link" href="/listings?page=<%= parseInt(page)+1 %>">
+        <span class="pagination__link-next pagination__link-text">Next &#8594; </span>
+    </a>
+    <% } %>
+    
+</div>
+<% } %>
+<script src="/js/clusterMap.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.12/dist/js/splide.min.js"></script>
+<script src="/js/carousel.js"></script>

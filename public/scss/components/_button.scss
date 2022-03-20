@@ -1,0 +1,53 @@
+//main button
+.btn {
+  color: $light-color;
+  font-size: $font-sm;
+  font-weight: map-get($map: $font-weights, $key: bold);
+  padding: 1em 2em;
+  margin: 0 0 1rem;
+  border-radius: $radius-reg;
+  margin-left: auto;
+  border: none;
+  transition: $transition;
+  &--primary {
+    background-color: $primary-color;
+    &:hover {
+      background-color: $primary-color-hovered;
+    }
+  }
+  &--alert {
+    background-color: $danger-color;
+    &:hover {
+      background-color: $danger-color-hovered;
+    }
+  }
+  &--success {
+    background-color: $success-color;
+    &:hover {
+      background-color: $success-color-hovered;
+    }
+  }
+  &--info {
+    background-color: $info-color;
+    &:hover {
+      background-color: $info-color-hovered;
+    }
+  }
+  &--full {
+    width: 100%;
+  }
+
+  &--small {
+    font-size: $font-xsm;
+    padding: 1em;
+  }
+  &--icon {
+    padding: .5em;
+    background-color: $primary-color;
+    margin: 0;
+  }
+}
+
+.form-btn-wrapper {
+  margin-top: 1rem;
+}

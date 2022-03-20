@@ -1,0 +1,38 @@
+.fade {
+    opacity: 0;
+    transition: opacity .15s ease;
+}
+
+.fade.show {
+    opacity: 1;
+}
+
+
+.flash {
+    color: $text-color;
+    border-radius: $radius-reg;
+    margin-bottom: 1rem;
+    width: 50%;
+    &--success {
+        background-color: $success-color;
+    }
+    &--alert {
+        background-color: $danger-color;
+    }
+    &__wrapper {
+        padding: 1.2rem 1.5rem;
+    }
+    &__title {
+        @include flexCenter(row, space-between);
+    }
+    &__close-icon {
+        cursor: pointer;
+    }
+    &__description {
+        margin-top: 2rem;
+    }
+    &--lg {
+        width: 100%;
+    }
+
+}

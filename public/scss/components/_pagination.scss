@@ -1,0 +1,35 @@
+.pagination {
+    text-align: center;
+    width: 90%;
+    margin: 2rem auto;
+    &__link {
+        display: inline-block;
+        padding: .5rem 1rem;
+        border: 1px solid $primary-color;
+        transition: $transition;
+        &:hover {
+            background-color: $primary-color;
+            color: $light-color;
+        }
+    }
+    &--disabled {
+        border: none;
+        pointer-events: none;
+        &:hover {
+            background-color: transparent;
+            color: $text-color;
+        }
+    }
+    &__current {
+        background-color: $primary-color;
+        color: $light-color
+    }
+}
+
+@include mobile {
+    .pagination {
+        &__link-text {
+            font-size: $font-xsm;
+        }
+    }
+}

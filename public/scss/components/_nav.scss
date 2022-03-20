@@ -1,0 +1,133 @@
+.menu {
+  background-color: #ffffff;
+  border-radius: $radius-reg;
+  box-shadow: $shadow;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateY(50px);
+  z-index: 1;
+  padding: 2rem;
+  text-align: center;
+  border-top: 3px solid $primary-color;
+  opacity: 1;
+  transition: opacity 0.3s linear;
+  width: 200px;
+  &__item {
+    transition: $transition;
+    &:hover {
+        color: $primary-color
+    }
+    display: block;
+  }
+  &__text {
+    font-size: $font-md;
+  }
+  &__suggestion {
+    display: none;
+  }
+  .fa-xmark {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-15px, 25px);
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}
+
+.menu.hide {
+  opacity: 0;
+  z-index: -999;
+}
+
+.nav {
+  @include flexCenter(row, space-between);
+  align-items: center;
+  padding: 1.3rem 0;
+  &__item {
+    position: relative;
+  }
+  &__link {
+    transition: $transition;
+    &:hover {
+        color: $primary-color
+    }
+  }
+  &__logo {
+    width: 4rem;
+  }
+  &__search {
+    width: 20rem;
+    padding: 0.6rem;
+  }
+  &__right {
+    @include flexCenter("row", "space-between");
+    gap: 1rem;
+  }
+}
+
+.big-screen-item {
+  display: inline-block;
+}
+
+.search {
+  border-radius: $radius-reg;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+  width: 20rem;
+  &__wrapper {
+    @include flexCenter('row', 'center');
+  }
+  &__input {
+      width: 100%;
+      border-right: $border;
+      padding: 1rem 0.5rem;
+  }
+  &__icon {
+    padding: 0 .5rem;
+    color: $primary-color;
+  }
+}
+
+@include mobile {
+  .nav {
+    &__text {
+      display: inline-block;
+    }
+    &__mobile-btn {
+      position: relative;
+      top: 1.3rem;
+    }
+  }
+  .search {
+    width: 14rem;
+  }
+  .menu {
+    width: 80vw;
+    max-width: 450px;
+    &__suggestion {
+      display: block;
+    }
+  }
+  .inputs {
+    width: 10rem;
+    &__child {
+      padding: 0.5rem;
+      input {
+        width: 100%;
+      }
+    }
+    &__child-icon {
+      color: $primary-color;
+    }
+  }
+  .big-screen-item {
+    display: none;
+  }
+
+  .nav__item.hide {
+    display: none
+  }
+}

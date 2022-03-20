@@ -1,0 +1,104 @@
+//Image Gallery
+.thumbnails {
+width: 100%;
+display: flex;
+margin: 1rem auto 0;
+padding: 0;
+justify-content: center;
+    .is-active {
+        opacity: 1;
+    }
+}
+  
+.thumbnail {
+width: 100%;
+height: auto;
+max-height: 7rem;
+overflow: hidden;
+list-style: none;
+margin: 0 0.2rem;
+cursor: pointer;
+opacity: 0.3;
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.main-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    max-height: 30rem;
+}
+
+#main-slider {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+//All Page Styles
+.show-page-wrapper {
+    display: flex;
+}
+
+.show-left {
+    width: 100%;
+}
+
+.review-header {
+    margin-bottom: 2rem;
+}
+
+.review {
+    border-bottom: $border;
+    margin-bottom: 1.5rem;
+    &__date {
+        font-size: $font-sm;
+    }
+}
+
+.review-form {
+    width: 50%;
+}
+
+.show-map {
+    height: 400px;
+    margin-bottom: 2rem;
+}
+
+.show-right {
+    width: 100%;
+    margin-left: 2.2rem;
+}
+
+.datepicker {
+    margin-right: 1rem;
+    width: 30%;
+}
+
+@include mobile {
+    .show-page-wrapper {
+        flex-direction: column;
+    }
+
+    .show-map {
+        margin-left: 0;
+    }
+
+    .review-form {
+        width: 100%;
+    }
+    
+    .show-right {
+        margin: 0;
+    }
+
+    .datepicker {
+        width: 42%;
+    }
+}
+
+
+

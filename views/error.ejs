@@ -1,0 +1,14 @@
+<%- layout('layout/boilerplate') %>
+<div class="flash flash--alert flash--lg fade show">
+    <div class="flash__wrapper">
+        <div class="flash__title">
+            <div class="flash__message"><h2><%= err.message %></h2></div>
+            <i class="flash__close-icon fa-solid fa-xmark fa-lg"></i>
+        </div>
+        <% if(process.env.NODE_ENV !== "production") { %> 
+        <div class="flash__description">
+            <%= err.stack %>
+        </div>
+        <% } %> 
+    </div>
+</div>

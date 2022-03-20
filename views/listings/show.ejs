@@ -1,0 +1,143 @@
+<%- layout('./layout/boilerplate') %>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.12/dist/css/splide.min.css">
+<link rel="stylesheet" type="text/css" href="/dist/stars.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<section>
+    <h2 class="section-header"><%= listing.title %></h2>
+    <div>
+        <p><i class="stay__star-icon fa fa-solid fa-star"></i><%= listing.avgRating %></p>
+        <a href="">
+            <p><%= listing.reviews.length %> Review </p>
+        </a>
+        <div class="flex-center">
+            <p><%= listing.location.city %>,<%= listing.location.country %></p>
+        </div>
+    </div>
+    <div class="show-page-wrapper">
+        <div class="show-left">
+            <div id="main-slider" class="splide">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        <% for(let image of listing.images) { %>
+                        <li class="splide__slide">
+                            <img class="main-image" src="<%= image.url %>" />
+                        </li>
+                        <% } %>
+                    </ul>
+                </div>
+                <ul id="thumbnails" class="thumbnails">
+                    <% for(let image of listing.images) { %>
+                    <li class="thumbnail">
+                        <img src="<%= image.url %>" />
+                    </li>
+                    <% } %>
+                </ul>
+            </div>
+            <div class="listing-description">
+                <div class="listing-description__wrapper">
+                    <h3><%= listing.stayingType %> hosted by <%= listing.owner.username %></h3>
+                    <p><%= listing.numRoom %> bedrooms - <%= listing.numBed %> beds - <%= listing.numBath %> baths</p>
+                </div>
+                <div>
+                    <p><%= listing.description %></p>
+                </div>
+            </div>
+            <% if(user && user._id.equals(listing.owner._id)) { %>
+            <div class="flex-center mb-sm">
+                <form action="/listings/<%= listing._id %>/edit">
+                    <div class="form-btn-wrapper">
+                        <button class="btn btn--info" type="submit">Edit Listing</button>
+                    </div>
+                </form>
+                <form action="/listings/<%= listing._id %>?_method=DELETE" method="POST">
+                    <div class="form-btn-wrapper">
+                        <button class="btn btn--alert" type="submit">Delete Listing</button>
+                    </div>
+                </form>
+            </div>
+            <% } %>
+        </div>
+        <div class="show-right">
+            <div id='map' class="show-map"></div>
+            <form action="/listings/<%= listing._id %>/bookings" id="form" method="POST" novalidate>
+                <div class="input-wrapper">
+                    <div class="input-wrapper__check">
+                        <div class="datepickers">
+                            <input type="date" class="input-wrapper__input datepicker" id="startDatePicker"
+                                placeholder="Select Check-in Date..." name="date[checkin]" required>
+                            <input type="text" class="input-wrapper__input datepicker" id="endDatePicker"
+                                placeholder="Select Check-out Date..." name="date[checkout]" required>
+                        </div>
+                        <i class="input-wrapper__control fa-solid fa-circle-check"></i>
+                        <i class="input-wrapper__control fa-solid fa-circle-exclamation"></i>
+                        <div class="err-message"></div>
+                    </div>
+                </div>
+                <button class="btn btn--primary booking-btn" type="submit">Reserve</button>
+            </form>
+        </div>
+    </div>
+</section>
+<section>
+    <form action="/listings/<%= listing._id %>/reviews" method="POST">
+        <div class="review-form">
+            <h2 class="subsection-header">Reviews</h2>
+            <fieldset class="starability-heart">
+                <legend>Rating:</legend>
+                <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked
+                    aria-label="No rating." />
+                <input type="radio" id="second-rate1" name="rating" value="1" />
+                <label for="second-rate1" title="Terrible">1 star</label>
+                <input type="radio" id="second-rate2" name="rating" value="2" />
+                <label for="second-rate2" title="Not good">2 stars</label>
+                <input type="radio" id="second-rate3" name="rating" value="3" />
+                <label for="second-rate3" title="Average">3 stars</label>
+                <input type="radio" id="second-rate4" name="rating" value="4" />
+                <label for="second-rate4" title="Very good">4 stars</label>
+                <input type="radio" id="second-rate5" name="rating" value="5" />
+                <label for="second-rate5" title="Amazing">5 stars</label>
+            </fieldset>
+            <div class="flex-center">
+                <h3><i class="stay__star-icon fa fa-solid fa-star"></i><%= listing.avgRating %></h3>
+                <h3 href=""><%= listing.reviews.length %> Review </h3>
+            </div>
+            <div class="input-wrapper">
+                <textarea name="body" id="body" cols="30" rows="10" class="input-wrapper__input" required></textarea>
+            </div>
+            <div class="form-btn-wrapper">
+                <button class="btn btn--success mb-sm" type="submit">Add Review</button>
+            </div>
+        </div>
+    </form>
+    <div class="reviews">
+        <% for(let review of listing.reviews) { %>
+        <div class="review">
+            <div class="flex-center">
+                <h3><%= review.owner.username %></h3>
+                <p class="starability-result" data-rating="<%= review.rating %>">
+                    Rated: 3 stars
+                </p>
+            </div>
+            <p class="review__date text-muted">
+                <%= review.date.toDateString() %>,
+                <%= review.date.toLocaleTimeString() %>
+            </p>
+            <div class="flex-center">
+                <p><%= review.body %></p>
+                <% if(user && review.owner._id.equals(user._id)) { %>
+                <form action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST">
+                    <button class="btn btn--alert btn--small">Delete</button>
+                </form>
+                <% } %>
+            </div>
+        </div>
+        <% } %>
+    </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.12/dist/js/splide.min.js"></script>
+<script src="/js/thumbnail.js"></script>
+<script src="/js/showPageMap.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="/js/datepicker.js"></script>
+<script src="/js/validateForm.js"></script>
